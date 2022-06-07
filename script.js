@@ -40,12 +40,10 @@ function populate(displayValue) {
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        return(button.id);
+        populate(button.innerText);
     });
 });
 
-//
-const button1 = document.querySelector('#button1');
-button1.addEventListener('click', () => {
-    populate(1)
-})
+/*When the user clicks on a number, it uses the populate function
+ to display the number*/
+
