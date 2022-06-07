@@ -1,6 +1,9 @@
 const display = document.querySelector(".display")
 let displayValue = 0
+let firstNumber = 0
+let operator = ""
 
+//We first define our operations
 function add(a,b) {
     return a+b
 }
@@ -17,15 +20,19 @@ function divide(a,b) {
     return a/b
 }
 
-function operate(operator, a, b) {
-    if (operator = "+") {
-        add(a,b)
-    } else if (operator = "-") {
-        substract(a,b)
-    } else if (operator = "*") {
-        multiply(a,b)
-    } else if (operator = "/") {
-        divide(a,b)
+/* When the user clicks on =, the operate function 
+calculates the result */
+function operate(a, b) {
+    a = parseFloat(a)
+    b = parseFloat(b)
+    if (operator == "+") {
+        return a+b
+    } else if (operator == "-") {
+        return (a - b)
+    } else if (operator == "*") {
+        return multiply(a,b)
+    } else if (operator == "/") {
+        return a / b
     }
 }
 
@@ -39,10 +46,21 @@ function populate(valueToAdd) {
         displayValue = 0;
     } else if (displayValue == 0) {
         displayValue = valueToAdd;
-    } else {
+    } else if (valueToAdd == "+" || valueToAdd == "-" || valueToAdd == "/" || valueToAdd == "*") {
+    /* We keep the currentNumber in firstNumber in case
+    the user's choice is an operator. We also keep the operator */
+        firstNumber = currentNumber
+        operator = valueToAdd
+        displayValue = displayValue + valueToAdd;
+    } else if (valueToAdd == "=") {
+        displayValue = operate(currentNumber, firstNumber)
+    }
+    else {
         displayValue = displayValue + valueToAdd;
     }
     display.textContent = `${displayValue}`
+    // We update the current number
+    currentNumber = displayValue
 }
 
 /*When the user clicks on a number, it uses the populate function
