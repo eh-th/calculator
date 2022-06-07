@@ -1,3 +1,6 @@
+const display = document.querySelector(".display")
+let displayValue = 0
+
 function add(a,b) {
     return a+b
 }
@@ -31,12 +34,19 @@ function clear() {
     display.textContent = ``
 }
 
-function populate(displayValue) {
-    const display = document.querySelector(".display")
+function populate(valueToAdd) {
+    if (valueToAdd == "AC") {
+        displayValue = 0;
+    } else if (displayValue == 0) {
+        displayValue = valueToAdd;
+    } else {
+        displayValue = displayValue + valueToAdd;
+    }
     display.textContent = `${displayValue}`
 }
 
-//Add events for the buttons
+/*When the user clicks on a number, it uses the populate function
+ to display the number*/
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -44,6 +54,5 @@ buttons.forEach((button) => {
     });
 });
 
-/*When the user clicks on a number, it uses the populate function
- to display the number*/
+
 
