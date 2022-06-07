@@ -43,28 +43,35 @@ function clear() {
 }
 
 function populate(valueToAdd) {
+    //First of all, let's clear the display if we click AC
     if (valueToAdd == "AC") {
         displayValue = 0;
+        //We need to be sure the display doesn't show numbers like 04 or 07
     } else if (displayValue == 0) {
         displayValue = valueToAdd;
         currentNumber = valueToAdd;
+        
     } else if (valueToAdd == "+" || valueToAdd == "-" || valueToAdd == "/" || valueToAdd == "*") {
     /* We keep the currentNumber in firstNumber in case
-    the user's choice is an operator. We also keep the operator */
+    the user's choice is an operator. We also keep the operator. We then set
+    the currentNumber back to 0 */
         firstNumber = currentNumber
         operator = valueToAdd
         displayValue = displayValue + valueToAdd;
         currentNumber = 0
+    //If we want the result, we use the operate function. We then reset currentNumber and firstNumber
     } else if (valueToAdd == "=") {
         displayValue = operate(currentNumber, firstNumber)
+        currentNumber = 0
+        firstNumber = 0
     }
+    //We add numbers
     else {
         displayValue = displayValue + valueToAdd;
         currentNumber = currentNumber + valueToAdd;
     }
+    //We update the display
     display.textContent = `${displayValue}`
-    // We update the current number
-    console.log(currentNumber)
 }
 
 /*When the user clicks on a number, it uses the populate function
