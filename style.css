@@ -1,16 +1,23 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 
 body {
     min-height: 100vh;
     height: 100vh;
-    background-color: #27233A;
+    background-color: grey;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 2%;
 }
+
+#calculator {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
