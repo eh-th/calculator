@@ -35,9 +35,12 @@ body {
     color: white;
     font-size: 30px;
 }
-.first, .second, .third, .fourth{
+.second, .third{
     display: flex;
     flex-grow: 1;
+}
+.first, .fourth {
+    display: flex;
 }
 
 .operator {
@@ -58,4 +61,13 @@ body {
     background-color: white;
     height: 50px;
     width: 50px;
+}
+
+#buttonEqual {
+    background-color: orange;
+    flex-grow: 2;
+}
+
+#buttonReturn {
+    flex-grow: 2;
 }

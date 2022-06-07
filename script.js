@@ -38,12 +38,12 @@ function operate(a, b) {
             return "Error"
         } else return b/a
     }
+    //Check if the result is float and if so, round it
 }
 
-function clear() {
-    const display = document.querySelector(".display")
-    display.textContent = ``
-}
+//check if a number is a float
+
+
 
 function populate(valueToAdd) {
     //First of all, let's clear the display and the saved operator if we click AC
@@ -78,7 +78,7 @@ function populate(valueToAdd) {
     We keed the result as the currentNumber in case the user want to do some extra operations from this point */
     } else if (valueToAdd == "=") {
         //We round the number 
-        displayValue = operate(currentNumber, firstNumber).toFixed(3)
+        displayValue = operate(currentNumber, firstNumber).toFixed(2)
         currentNumber = displayValue
         firstNumber = 0
         operator = ''
