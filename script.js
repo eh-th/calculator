@@ -35,3 +35,11 @@ function populate(displayValue) {
     const display = document.querySelector(".display")
     display.textContent = `${displayValue}`
 }
+
+//Add events for the buttons
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        return(button.id);
+    });
+});
