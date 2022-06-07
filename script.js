@@ -33,7 +33,10 @@ function operate(a, b) {
     } else if (operator == "*") {
         return multiply(a,b)
     } else if (operator == "/") {
-        return b / a
+        //Send an error message if we try to divide by 0
+        if (a == 0) {
+            return "Error"
+        } else return b/a
     }
 }
 
