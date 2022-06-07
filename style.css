@@ -20,4 +20,10 @@ body {
     border-width: 1px;
     border-color: black;
 }
+.display {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    height: 20px;
+}
 

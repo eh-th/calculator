@@ -25,3 +25,8 @@ function operate(operator, a, b) {
         divide(a,b)
     }
 }
+
+function populate(displayValue) {
+    const display = document.querySelector(".display")
+    display.textContent = `${displayValue}`
+}
