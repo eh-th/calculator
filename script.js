@@ -77,7 +77,8 @@ function populate(valueToAdd) {
     /* If we want the result, we use the operate function. We then reset firstNumber and the operator.
     We keed the result as the currentNumber in case the user want to do some extra operations from this point */
     } else if (valueToAdd == "=") {
-        displayValue = operate(currentNumber, firstNumber)
+        //We round the number 
+        displayValue = operate(currentNumber, firstNumber).toFixed(3)
         currentNumber = displayValue
         firstNumber = 0
         operator = ''
