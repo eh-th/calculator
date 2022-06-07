@@ -26,6 +26,11 @@ function operate(operator, a, b) {
     }
 }
 
+function clear() {
+    const display = document.querySelector(".display")
+    display.textContent = ``
+}
+
 function populate(displayValue) {
     const display = document.querySelector(".display")
     display.textContent = `${displayValue}`
