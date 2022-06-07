@@ -1,6 +1,7 @@
 const display = document.querySelector(".display")
 let displayValue = 0
 let firstNumber = 0
+let currentNumber = 0
 let operator = ""
 
 //We first define our operations
@@ -28,11 +29,11 @@ function operate(a, b) {
     if (operator == "+") {
         return a+b
     } else if (operator == "-") {
-        return (a - b)
+        return (b - a)
     } else if (operator == "*") {
         return multiply(a,b)
     } else if (operator == "/") {
-        return a / b
+        return b / a
     }
 }
 
@@ -46,21 +47,24 @@ function populate(valueToAdd) {
         displayValue = 0;
     } else if (displayValue == 0) {
         displayValue = valueToAdd;
+        currentNumber = valueToAdd;
     } else if (valueToAdd == "+" || valueToAdd == "-" || valueToAdd == "/" || valueToAdd == "*") {
     /* We keep the currentNumber in firstNumber in case
     the user's choice is an operator. We also keep the operator */
         firstNumber = currentNumber
         operator = valueToAdd
         displayValue = displayValue + valueToAdd;
+        currentNumber = 0
     } else if (valueToAdd == "=") {
         displayValue = operate(currentNumber, firstNumber)
     }
     else {
         displayValue = displayValue + valueToAdd;
+        currentNumber = currentNumber + valueToAdd;
     }
     display.textContent = `${displayValue}`
     // We update the current number
-    currentNumber = displayValue
+    console.log(currentNumber)
 }
 
 /*When the user clicks on a number, it uses the populate function
