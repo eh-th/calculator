@@ -43,3 +43,9 @@ buttons.forEach((button) => {
         return(button.id);
     });
 });
+
+//
+const button1 = document.querySelector('#button1');
+button1.addEventListener('click', () => {
+    populate(1)
+})
