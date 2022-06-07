@@ -43,10 +43,12 @@ function clear() {
 }
 
 function populate(valueToAdd) {
-    //First of all, let's clear the display if we click AC
+    //First of all, let's clear the display and the saved operator if we click AC
     if (valueToAdd == "AC") {
         displayValue = 0;
-        //We need to be sure the display doesn't show numbers like 04 or 07
+        operator = ''
+
+        //We need to make sure that the display doesn't show numbers like 04 or 07
     } else if (displayValue == 0) {
         displayValue = valueToAdd;
         currentNumber = valueToAdd;
@@ -55,17 +57,29 @@ function populate(valueToAdd) {
     /* We keep the currentNumber in firstNumber in case
     the user's choice is an operator. We also keep the operator. We then set
     the currentNumber back to 0 */
-        firstNumber = currentNumber
-        operator = valueToAdd
-        displayValue = displayValue + valueToAdd;
-        currentNumber = 0
-    //If we want the result, we use the operate function. We then reset currentNumber and firstNumber
+
+        /*We first check if there already was a previous operation in hold. 
+        If so, we use the operate function to save the result as the new firstNumber */
+        if (operator) {
+            firstNumber = operate(currentNumber,firstNumber)
+            operator = valueToAdd
+            displayValue = firstNumber + valueToAdd
+            currentNumber = 0
+        } else {
+            operator = valueToAdd
+            firstNumber = currentNumber
+            displayValue = displayValue + valueToAdd;
+            currentNumber = 0
+        }
+    /* If we want the result, we use the operate function. We then reset firstNumber and the operator.
+    We keed the result as the currentNumber in case the user want to do some extra operations from this point */
     } else if (valueToAdd == "=") {
         displayValue = operate(currentNumber, firstNumber)
-        currentNumber = 0
+        currentNumber = displayValue
         firstNumber = 0
+        operator = ''
     }
-    //We add numbers
+    //We add numbers to the display and to currentNumber as they are provided
     else {
         displayValue = displayValue + valueToAdd;
         currentNumber = currentNumber + valueToAdd;
