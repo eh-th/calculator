@@ -12,7 +12,7 @@
 body {
     min-height: 100vh;
     height: 100vh;
-    background: linear-gradient(to right, #CBCE91FF, #EA738DFF);
+    background: linear-gradient(to right, #A96DA3, #93BEDF);
     display: flex;
     justify-content: center;
     align-items: center;
