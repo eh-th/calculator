@@ -4,22 +4,6 @@ let firstNumber = 0
 let currentNumber = 0
 let operator = ""
 let result = 0
-//We first define our operations
-function add(a,b) {
-    return a+b
-}
-
-function substract(a,b) {
-    return a-b
-}
-
-function multiply(a,b) {
-    return a*b
-}
-
-function divide(a,b) {
-    return a/b
-}
 
 /* When the user clicks on =, the operate function 
 calculates the result */
@@ -31,7 +15,7 @@ function operate(a, b) {
     } else if (operator == "-") {
         result = (b - a)
     } else if (operator == "*") {
-        result = multiply(a,b)
+        result = a*b
     } else if (operator == "/") {
         //Send an error message if we try to divide by 0
         if (a == 0) {
@@ -44,25 +28,27 @@ function operate(a, b) {
     } else return result.toFixed(2)    
 }
 
-//check if a number is a float
-
-
-
 function populate(valueToAdd) {
     /*We first check if the currentNumber already contains a .
     We disable the . button if it does */
     if (currentNumber.toString().includes('.')) {
         document.getElementById("button.").disabled = true;
     } else document.getElementById("button.").disabled = false;
+
+    
     //We clear the display and the saved operator if we click AC
     if (valueToAdd == "AC") {
         displayValue = 0;
         operator = ''
-
         //We need to make sure that the display doesn't show numbers like 04 or 07
     } else if (displayValue == 0) {
         displayValue = valueToAdd;
         currentNumber = valueToAdd;
+           
+        //We remove the last number if the user clicks the backspace button
+    } else if (valueToAdd == "C") {
+        currentNumber = parseInt(currentNumber.toString().slice(0,-1))
+        displayValue = currentNumber
         
     } else if (valueToAdd == "+" || valueToAdd == "-" || valueToAdd == "/" || valueToAdd == "*") {
     /* We keep the currentNumber in firstNumber in case
@@ -98,6 +84,7 @@ function populate(valueToAdd) {
     }
     //We update the display
     display.textContent = `${displayValue}`
+    console.log(currentNumber)
 }
 
 /*When the user clicks on a number, it uses the populate function
