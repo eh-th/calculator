@@ -3,7 +3,7 @@ let displayValue = 0
 let firstNumber = 0
 let currentNumber = 0
 let operator = ""
-
+let result = 0
 //We first define our operations
 function add(a,b) {
     return a+b
@@ -27,18 +27,21 @@ function operate(a, b) {
     a = parseFloat(a)
     b = parseFloat(b)
     if (operator == "+") {
-        return a+b
+        result = a+b
     } else if (operator == "-") {
-        return (b - a)
+        result = (b - a)
     } else if (operator == "*") {
-        return multiply(a,b)
+        result = multiply(a,b)
     } else if (operator == "/") {
         //Send an error message if we try to divide by 0
         if (a == 0) {
             return "Error"
-        } else return b/a
+        } else result = b/a
     }
     //Check if the result is float and if so, round it
+    if (result % 1 === 0) {
+        return result
+    } else return result.toFixed(2)    
 }
 
 //check if a number is a float
@@ -78,7 +81,7 @@ function populate(valueToAdd) {
     We keed the result as the currentNumber in case the user want to do some extra operations from this point */
     } else if (valueToAdd == "=") {
         //We round the number 
-        displayValue = operate(currentNumber, firstNumber).toFixed(2)
+        displayValue = operate(currentNumber, firstNumber)
         currentNumber = displayValue
         firstNumber = 0
         operator = ''
