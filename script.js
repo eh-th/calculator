@@ -49,7 +49,12 @@ function operate(a, b) {
 
 
 function populate(valueToAdd) {
-    //First of all, let's clear the display and the saved operator if we click AC
+    /*We first check if the currentNumber already contains a .
+    We disable the . button if it does */
+    if (currentNumber.toString().includes('.')) {
+        document.getElementById("button.").disabled = true;
+    } else document.getElementById("button.").disabled = false;
+    //We clear the display and the saved operator if we click AC
     if (valueToAdd == "AC") {
         displayValue = 0;
         operator = ''
